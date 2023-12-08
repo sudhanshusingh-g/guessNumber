@@ -6,7 +6,7 @@ const attempt=document.querySelector('.attempt')
 const result=document.querySelector('.result')
 const resultContainer=document.querySelector('.resultContainer')
 
-const error=document.createElement('p')
+const error=document.createElement('h1')
 
 
 
@@ -21,13 +21,14 @@ if(playGame){
         const value=parseInt(input.value)
         console.log(value,randomNumber);
         validateInput(value)
+        input.value=''
     })
 }
 
 // Check input is number or not
 function validateInput(value){
     if( isNaN(value) || value ==='' || value < 1 || value > 10){
-        result.innerHTML=`<h2>Please enter a valid number 🙏🏻`
+        result.innerHTML=`<h4>Please enter a valid number 🙏🏻</h4>`
     }
     else{
         checkGuess(value)
@@ -39,36 +40,36 @@ function checkGuess(guess){
     guessList.push(guess)
     prevGuess.innerHTML+=`${guess},`
     attemptNumber++;
-    attempt.innerHTML=`${4-attemptNumber}`
+    attempt.innerHTML=`${6-attemptNumber}`
+    if(attemptNumber === 5){
+        endGame()
+        result.innerHTML='';
+    }
     if(guess == randomNumber){
-        console.log(guess,randomNumber);
-        result.innerHTML=`🎯`
+        result.innerHTML=`Bull's eye .The random number was ${guess}🎯`
         endGame()
     }
     else if(guess <randomNumber){
-        result.innerHTML=`${guess} is closer! 🤏`
+        result.innerHTML=`You are closer!🤏`
     }
     else if(guess >randomNumber){
-        result.innerHTML=`${guess} is farther ! 😪🥱`
+        result.innerHTML=`You are farther!😪`
     }
-
-}
-
-// To display result of the guess, update the attempt, and store the previous guess values
-function resultDisplay(guess){
-    
-}
-
-// Display message
-function displayMessage(message){
-
 }
 
 // start a game 
 function newGame(){
+    input.value=''
+    playGame=true
+    attemptNumber=1
+    guessList=[]
 
 } 
 // end game
 function endGame(){
-    
+    input.setAttribute('disabled','')
+    button.setAttribute('disabled','')
+    error.innerHTML=`<button onclick="newGame()">Start a new game</button>`
+    resultContainer.appendChild(error)
+    playGame=false
 }

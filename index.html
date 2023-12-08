@@ -8,21 +8,59 @@
         body{
             background: #000;
             color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+        .container{
+            width: 50%;
+            padding: 1.5rem 1rem 4rem;
+            margin: 0 auto;
+            background: #333333;
+            text-align: center;
+            box-shadow: 1px 2px 1px rgb(141, 27, 27) inset,-1px -2px -1px rgb(255, 141, 141) outset;
+            border-radius: 0.5rem;
+        }
+        input[type='text']{
+            padding: 0.4rem;
+            margin: 0.4rem 0;
+            outline: none;
+        }
+        #button{
+            padding: 0.8rem 1.8rem;
+            border: none;
+            background: #000;
+            color: #fff;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        button{
+            padding: 0.5rem 1rem;
+            border: none;
+            background: #000;
+            color: #fff;
+            border-radius: 0.4rem;
+            cursor: pointer;
+        }
+        .prevGuess{
+            background: #727171;
+            padding: 0.2rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Guess the number</h1>
-        <p>Try guessing the number between 1 and 10.<br/>You have 10 attempts to guess the right number.</p>
+        <h1>Guess Game</h1>
+        <p>Try guessing the number between 1 and 10.<br/>You have 5 attempts to guess the right number.</p>
         <form>
-            <label2 for="guessField" id="guess">Guess the number</label>
-            <input type="text" id="input">
+            <label2 for="guessField" id="guess">Guess the number</label><br/>
+            <input type="text" id="input"><br/>
             <input type="submit" value="Check" id="button" class="guessSubmit">
         </form>
         <div class="resultContainer">
             <p>Previous Guesses: <span class="prevGuess"></span></p>
-            <p>Attempts:<span class="attempt">3</span></p>
+            <p>Attempts : <span class="attempt">5</span></p>
             <h1 class="result"></h1>
         </div>
     </div>

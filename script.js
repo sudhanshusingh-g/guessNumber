@@ -18,7 +18,8 @@ let playGame=true;
 if(playGame){
     button.addEventListener('click',(e)=>{
         e.preventDefault()
-        const value=input.value
+        const value=parseInt(input.value)
+        console.log(value,randomNumber);
         validateInput(value)
     })
 }
@@ -37,9 +38,18 @@ function validateInput(value){
 function checkGuess(guess){
     guessList.push(guess)
     prevGuess.innerHTML+=`${guess},`
-    if(guess === randomNumber){
-        result.innerHTML=`You win`
+    attemptNumber++;
+    attempt.innerHTML=`${4-attemptNumber}`
+    if(guess == randomNumber){
+        console.log(guess,randomNumber);
+        result.innerHTML=`🎯`
         endGame()
+    }
+    else if(guess <randomNumber){
+        result.innerHTML=`${guess} is closer! 🤏`
+    }
+    else if(guess >randomNumber){
+        result.innerHTML=`${guess} is farther ! 😪🥱`
     }
 
 }
